@@ -1,0 +1,16 @@
+@import "tailwindcss";
+:root {
+    --bg: var(--tg-theme-bg-color, #ffffff);
+    --text: var(--tg-theme-text-color, #0f0f0f);
+    --hint: var(--tg-theme-hint-color, #707579);
+    --secondary-bg: var(--tg-theme-secondary-bg-color, #f4f4f5);
+    --accent: var(--tg-theme-button-color, #2ea6ff);
+    --accent-text: var(--tg-theme-button-text-color, #ffffff);
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
