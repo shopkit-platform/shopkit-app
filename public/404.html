@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>Redirecting...</title>
+    <meta charset="UTF-8" />
+    <title>Redirect</title>
     <script>
-        sessionStorage.redirect = location.href;
-        location.replace('/');
+        const redirect = location.pathname.replace('/shopkit-app', '')
+        location.replace('/shopkit-app/?redirect=' + redirect)
     </script>
 </head>
 <body></body>

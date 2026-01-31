@@ -9,11 +9,5 @@ export default defineConfig({
       react(),
       tailwindcss(),
   ],
-  server: {
-    host: true,
-    allowedHosts: [
-      'myshop-telegram.loca.lt',
-      'localhost',
-    ],
-  }
+  base: '/shopkit/',
 })
