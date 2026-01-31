@@ -7,11 +7,9 @@ import {ProductModalPage} from "../pages/ProductModalPage.tsx";
 
 const App = () => {
     const location = useLocation()
-    const state = location.state as { background?: string }
+    const state = location.state as { background?: Location } | null
 
-    const backgroundLocation = state?.background
-        ? { pathname: state.background }
-        : null
+    const backgroundLocation = state?.background ?? null
 
     return (
         <>
