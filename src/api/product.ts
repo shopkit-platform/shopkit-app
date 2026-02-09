@@ -17,7 +17,8 @@ export const fetchProducts = async (shopId: number): Promise<Product[]> => {
     const res = await fetch(`${API_BASE}/products/${shopId}`)
 
     if (!res.ok) {
-        throw new Error('Failed to load products')
+
+        throw new Error('Failed to load products' + `id: ${shopId} url: ${API_BASE}/products/${shopId}`)
     }
 
     const data: ProductApiResponse[] = await res.json()
