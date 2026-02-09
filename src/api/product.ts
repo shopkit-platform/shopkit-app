@@ -14,7 +14,7 @@ type ProductApiResponse = {
 }
 
 export const fetchProducts = async (shopId: number): Promise<Product[]> => {
-    const res = await fetch(`${API_BASE}/api/products/${shopId}`)
+    const res = await fetch(`${API_BASE}/products/${shopId}`)
 
     if (!res.ok) {
         throw new Error('Failed to load products')
