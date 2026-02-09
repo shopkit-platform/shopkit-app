@@ -75,7 +75,7 @@ export const ProductModalPage = () => {
 
                     <div className="mt-4 flex items-center justify-between">
                         <span className="text-lg font-bold">
-                            {product.price} ₽
+                            {product.price} {product.currency}
                         </span>
 
                         <button
