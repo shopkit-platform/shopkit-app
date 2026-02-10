@@ -1,13 +1,17 @@
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import type { Product } from '../entities/product/model'
 import { useCartStore } from '../entities/cart/model'
 
 export const ProductCard = ({ product }: { product: Product }) => {
+    const location = useLocation()
     const addToCart = useCartStore(state => state.addToCart)
 
     return (
         <div className="bg-[var(--secondary-bg)] rounded-xl p-2">
-            <Link to={`/product/${product.id}`}>
+            <Link
+                to={`/product/${product.id}`}
+                state={{ background: location }}
+            >
                 <div className="w-full aspect-[3/4] overflow-hidden rounded-lg">
                     {product.image && (
                         <img

@@ -6,6 +6,7 @@ import {ProductModalPage} from "../pages/ProductModalPage.tsx";
 import {useEffect} from "react";
 import {useShopStore} from "../entities/shop/model.ts";
 import {initShop} from "./initShop.ts";
+import {AnimatePresence} from "framer-motion";
 
 
 const App = () => {
@@ -38,13 +39,19 @@ const App = () => {
             <Routes location={backgroundLocation || location}>
                 <Route path="/" element={<ProductsPage />} />
                 <Route path="/cart" element={<CartPage />} />
+                <Route path="/product/:id" element={<ProductModalPage />} />
             </Routes>
 
-            {backgroundLocation && (
-                <Routes>
-                    <Route path="/product/:id" element={<ProductModalPage />} />
-                </Routes>
-            )}
+            <AnimatePresence mode="wait">
+                {backgroundLocation && (
+                    <Routes location={location} key={location.pathname}>
+                        <Route
+                            path="/product/:id"
+                            element={<ProductModalPage />}
+                        />
+                    </Routes>
+                )}
+            </AnimatePresence>
         </>
     )
 }
