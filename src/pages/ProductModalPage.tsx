@@ -32,6 +32,9 @@ export const ProductModalPage = () => {
         !!product
     )
 
+    const tg = window.Telegram?.WebApp
+    const hasMainButton = !!tg?.MainButton
+
     if (!product) return null
 
     return (
@@ -92,16 +95,18 @@ export const ProductModalPage = () => {
                         {product.price} {product.currency}
                     </span>
 
-                    <button
-                        onClick={() => addToCart(product)}
-                        className="px-4 py-2 rounded-xl
-                                   bg-[var(--accent)]
-                                   text-[var(--accent-text)]
-                                   font-medium
-                                   cursor-pointer"
-                    >
-                        Добавить в корзину
-                    </button>
+                    {!hasMainButton && (
+                        <button
+                            onClick={() => addToCart(product)}
+                            className="px-4 py-2 rounded-xl
+                                       bg-[var(--accent)]
+                                       text-[var(--accent-text)]
+                                       font-medium
+                                       cursor-pointer"
+                        >
+                            Добавить в корзину
+                        </button>
+                    )}
                 </div>
             </motion.div>
         </motion.div>

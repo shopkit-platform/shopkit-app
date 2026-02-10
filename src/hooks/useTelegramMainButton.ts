@@ -22,6 +22,7 @@ export const useTelegramMainButton = (
 
         return () => {
             tg.MainButton.offClick(onClick)
+            tg.MainButton.hide()
         }
     }, [text, onClick, isVisible])
 }
