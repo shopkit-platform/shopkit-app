@@ -4,6 +4,7 @@ import { useCartStore } from '../entities/cart/model'
 import { FaTimes } from 'react-icons/fa'
 import { motion } from 'framer-motion'
 import {useTelegramMainButton} from "../hooks/useTelegramMainButton.ts";
+import {useCallback} from "react";
 
 export const ProductModalPage = () => {
     const { id } = useParams()
@@ -18,17 +19,18 @@ export const ProductModalPage = () => {
         navigate(-1)
     }
 
+    const handleAddToCart = useCallback(() => {
+        if (!product) return
+
+        const tg = window.Telegram?.WebApp
+        tg?.HapticFeedback?.impactOccurred('medium')
+
+        addToCart(product)
+    }, [product, addToCart, navigate])
+
     useTelegramMainButton(
         'Добавить в корзину',
-        () => {
-            if (!product) return
-
-            const tg = window.Telegram?.WebApp
-            tg?.HapticFeedback?.impactOccurred('medium')
-
-            addToCart(product)
-            navigate(-1)
-        },
+        handleAddToCart,
         !!product
     )
 

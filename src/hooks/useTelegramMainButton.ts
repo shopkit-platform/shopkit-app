@@ -1,28 +1,28 @@
-import {useEffect} from "react";
+import { useEffect } from 'react'
 
 export const useTelegramMainButton = (
     text: string,
     onClick: () => void,
-    isVisible: boolean
+    visible: boolean
 ) => {
     useEffect(() => {
         const tg = window.Telegram?.WebApp
         if (!tg) return
 
-        tg.MainButton.setText(text)
-        tg.MainButton.setParams?.({ is_active: isVisible })
+        const button = tg.MainButton
 
-        if (isVisible) {
-            tg.MainButton.show()
-        } else {
-            tg.MainButton.hide()
+        if (!visible) {
+            button.hide()
+            return
         }
 
-        tg.MainButton.onClick(onClick)
+        button.setText(text)
+        button.show()
+        button.onClick(onClick)
 
         return () => {
-            tg.MainButton.offClick(onClick)
-            tg.MainButton.hide()
+            button.offClick(onClick)
+            button.hide()
         }
-    }, [text, onClick, isVisible])
+    }, [text, onClick, visible])
 }
