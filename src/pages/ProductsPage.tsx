@@ -9,7 +9,7 @@ export const ProductsPage = () => {
         loadProducts()
     }, [])
 
-    if (isLoading) {
+    if (isLoading && products.length === 0) {
         return <div className="p-4 text-center">Загрузка товаров…</div>
     }
 
